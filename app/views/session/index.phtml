@@ -1,0 +1,19 @@
+<h2>Sign in using this form</h2>
+<?php echo $message; ?>
+<?php echo $this->tag->form("session/hasil"); ?>
+
+    <p>
+        <label for="username">Username</label>
+        <?php echo $this->tag->textField("username"); ?>
+    </p>
+
+    <p>
+        <label for="pwd">Password</label>
+        <?php echo $this->tag->textField("pwd"); ?>
+    </p>
+
+    <p>
+        <?php echo $this->tag->submitButton("Login"); ?>
+    </p>
+
+</form>

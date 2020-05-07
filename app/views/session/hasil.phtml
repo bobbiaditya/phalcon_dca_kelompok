@@ -1,0 +1,5 @@
+<div class="alert alert-<?php echo $message === true ? 'bisa' : 'gabisa'; ?>">
+    <?php echo $message; ?>
+</div>
+
+<?php echo $this->tag->linkTo(['/session/logout', 'Log Out', 'class' => 'btn btn-primary']); ?>
