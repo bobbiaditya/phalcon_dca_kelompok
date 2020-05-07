@@ -21,7 +21,7 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
     </style>
 </head>
 ";s:5:"title";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:2:"
-";s:4:"file";s:84:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca_kelompok/app/views/template/master.volt";s:4:"line";i:24;}}i:1;s:5369:"
+";s:4:"file";s:84:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca_kelompok/app/views/template/master.volt";s:4:"line";i:24;}}i:1;s:6936:"
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px;">
     <!-- Site wrapper -->
     <div class="wrapper">
@@ -100,26 +100,53 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
                                     </a>
                                 </li>
                             </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= $this->url->get('cucian') ?>" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Cucian
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= $this->url->get('alatberat') ?>" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Alat Berat
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        <?php } else { ?>
+                        </li>                       
+                        <?php } ?>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-clipboard"></i>
+                                <i class="nav-icon fas fa-file-alt"></i>
                                 <p>
-                                    User Admin
+                                    Transaksi
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
-                            </a>  
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= $this->url->get('pemakaianalatberat') ?>" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Pemakaian Alat
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        
-                        <?php } ?>
                     </ul>
                 </nav>
             </div>
         </aside>
         <div class="content-wrapper">
             ";s:7:"content";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:14:"
-            ";s:4:"file";s:84:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca_kelompok/app/views/template/master.volt";s:4:"line";i:122;}}i:2;s:243:"
+            ";s:4:"file";s:84:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca_kelompok/app/views/template/master.volt";s:4:"line";i:149;}}i:2;s:243:"
         </div>
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->

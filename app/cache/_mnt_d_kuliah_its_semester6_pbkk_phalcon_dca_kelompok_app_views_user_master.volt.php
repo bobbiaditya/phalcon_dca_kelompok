@@ -101,6 +101,25 @@
                                     </a>
                                 </li>
                             </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= $this->url->get('cucian') ?>" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Cucian
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= $this->url->get('alatberat') ?>" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Alat Berat
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         </li>
                         <?php } else { ?>
                         <li class="nav-item has-treeview">
@@ -111,9 +130,19 @@
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>  
-                        </li>
-                        
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= $this->url->get('pemakaianalatberat') ?>" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Pemakaian Alat
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>                        
                         <?php } ?>
+                        
                     </ul>
                 </nav>
             </div>

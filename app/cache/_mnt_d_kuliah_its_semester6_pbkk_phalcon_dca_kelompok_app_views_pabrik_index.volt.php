@@ -7,7 +7,7 @@
     <!-- <title>DCA | Dwi Citra Anugerah</title> -->
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{ assets.outputCss() }}
+    <?= $this->assets->outputCss() ?>
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Google Font: Source Sans Pro -->
@@ -20,8 +20,9 @@
         }
     </style>
 </head>
-{% block title %}
-{% endblock %}
+
+<title>Pabrik</title>
+
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px;">
     <!-- Site wrapper -->
     <div class="wrapper">
@@ -39,13 +40,13 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false" href="#">
-                        <i class="fas fa-user"></i>&nbsp;&nbsp;{{ session.get('auth')['username'] }}&nbsp;</a>
+                        <i class="fas fa-user"></i>&nbsp;&nbsp;<?= $this->session->get('auth')['username'] ?>&nbsp;</a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-info"
                         aria-labelledby="navbarDropdownMenuLink-4">
-                        {% if session.get('auth')['username'] ==='master' %}
-                        <a class="dropdown-item" href="{{ url('user') }}">List User</a>
-                        {% endif%}
-                        <a class="dropdown-item" href="{{ url('session/logout') }}">Log out</a>
+                        <?php if ($this->session->get('auth')['username'] === 'master') { ?>
+                        <a class="dropdown-item" href="<?= $this->url->get('user') ?>">List User</a>
+                        <?php } ?>
+                        <a class="dropdown-item" href="<?= $this->url->get('session/logout') ?>">Log out</a>
                     </div>
                 </li>
             </ul>
@@ -54,7 +55,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <span class="font-weight-bold brand-link" style="color:#343A40; background:#7CB1A6; padding-left: 13px;">
-                {{ image('img/DCA.png','class': 'brand-image img-circle elevation-3', 'style': 'opacity: .8') }}
+                <?= $this->tag->image(['img/DCA.png', 'class' => 'brand-image img-circle elevation-3', 'style' => 'opacity: .8']) ?>
                 <span class="brand-text font-weight-bold" style="padding-left: 15%;">DCA</span>
             </span>
             <!-- Sidebar -->
@@ -62,7 +63,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        {% if session.get('auth')['tipe'] ==='master' %}
+                        <?php if ($this->session->get('auth')['tipe'] === 'master') { ?>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-clipboard"></i>
@@ -73,7 +74,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('pemiliktruk') }}" class="nav-link">
+                                    <a href="<?= $this->url->get('pemiliktruk') ?>" class="nav-link">
                                         <!-- <i class="nav-icon fas fa-truck"></i> -->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
@@ -82,7 +83,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('supirtruk') }}" class="nav-link">
+                                    <a href="<?= $this->url->get('supirtruk') ?>" class="nav-link">
                                         <!-- <i class="nav-icon fas fa-user-tie"></i> -->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
@@ -91,7 +92,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('pabrik') }}" class="nav-link">
+                                    <a href="<?= $this->url->get('pabrik') ?>" class="nav-link">
                                         <!-- <i class="nav-icon fas fa-warehouse"></i> -->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
@@ -102,7 +103,7 @@
                             </ul>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('cucian') }}" class="nav-link">
+                                    <a href="<?= $this->url->get('cucian') ?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
                                             Cucian
@@ -110,7 +111,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('alatberat') }}" class="nav-link">
+                                    <a href="<?= $this->url->get('alatberat') ?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
                                             Alat Berat
@@ -119,19 +120,19 @@
                                 </li>
                             </ul>
                         </li>
-                        </li>                       
-                        {% endif%}
+                        </li>
+                        <?php } else { ?>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-file-alt"></i>
+                                <i class="nav-icon fas fa-clipboard"></i>
                                 <p>
-                                    Transaksi
+                                    User Admin
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
-                            </a>
+                            </a>  
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('pemakaianalatberat') }}" class="nav-link">
+                                    <a href="<?= $this->url->get('pemakaianalatberat') ?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
                                             Pemakaian Alat
@@ -139,20 +140,63 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li>                        
+                        <?php } ?>
+                        
                     </ul>
                 </nav>
             </div>
         </aside>
         <div class="content-wrapper">
-            {% block content %}
-            {% endblock %}
+            
+
+</head>
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
+            <strong>PABRIK</strong>
+        </div>
+        <div class="card-header">
+            <a href="<?= $this->url->get('pabrik/tambah') ?>" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus"
+                    style="padding-right: 7px;"></span>Input</a>
+        </div>
+        <div class="card-header text-success text-center">
+            <?= $this->flashSession->output() ?>
+        </div>
+        <div class="card-body table-responsive p-0" style="height: 500px;">
+            <table class="table table-bordered table-hover table-striped table-head-fixed">
+                <thead>
+                    <tr>
+                        <th>Nama Pabrik</th>
+                        <th>Kode Pabrik</th>
+                        <th>Harga Pasir</th>
+                        <th>OPSI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($pabriks as $p) { ?>
+                    <tr>
+                        <td><?= $p->nama_pabrik ?></td>
+                        <td><?= $p->kode_pabrik ?></td>
+                        <td><?= $p->harga_pasir ?></td>
+                        <td>
+                            <a href="<?= $this->url->get('pabrik/edit/' . $p->id_pabrik) ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="<?= $this->url->get('pabrik/hapus/' . $p->id_pabrik) ?>" class="btn btn-danger btn-sm">Hapus</a>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
         </div>
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
         </aside>
         <!-- jQuery -->
-        {{ assets.outputJs() }}
+        <?= $this->assets->outputJs() ?>
 
 </body>
 
