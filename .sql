@@ -94,3 +94,4 @@ create TABLE konstan (
   created_at datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
 )
 
+insert into konstan(rate_mahsun,created_at) values (135,GETDATE())
