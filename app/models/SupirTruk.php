@@ -39,6 +39,16 @@ class SupirTruk extends Model
                 'alias'    => 'pemilik'
             ]
         );
+        
+        $this->hasMany(
+            'id_supir',
+            Transaksi::class,
+            'id_supir',
+            [
+                'reusable' => true,
+                'alias'    => 'transaksi'
+            ]
+        );
     }
 
     /**

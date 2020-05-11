@@ -30,6 +30,16 @@ class Pabrik extends Model
 
         // Untuk mengeset nama tabel, default : nama class
         $this->setSource('pabrik');
+
+        $this->hasMany(
+            'id_pabrik',
+            Transaksi::class,
+            'id_pabrik',
+            [
+                'reusable' => true,
+                'alias'    => 'transaksi'
+            ]
+        );
     }
 
     /**

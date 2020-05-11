@@ -17,6 +17,15 @@ class Cucian extends Model
         $this->setWriteConnectionService('db');
         $this->setSchema('dbo');
         $this->setSource('cucian');
+        $this->hasMany(
+            'id_cucian',
+            Transaksi::class,
+            'id_cucian',
+            [
+                'reusable' => true,
+                'alias'    => 'transaksi'
+            ]
+        );
     }
 
     public function onConstruct(){

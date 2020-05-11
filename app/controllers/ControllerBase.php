@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controllers;
-
+date_default_timezone_set("Asia/Bangkok");
 use Phalcon\Mvc\Controller;
 
 class ControllerBase extends Controller
