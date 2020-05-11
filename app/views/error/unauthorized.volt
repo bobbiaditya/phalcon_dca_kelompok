@@ -5,11 +5,14 @@
 
     <style>
         #main {
-    height: 100vh;
-}
+            margin-top: 100px;
+        }
     </style>
 </head>
-<div class="d-flex justify-content-center align-items-center" id="main">
+<div class="d-flex justify-content-center align-items-center" id='main'>
+    <img src="img/401.png" style="width:300px;height:300px;">
+</div>
+<div class="d-flex justify-content-center align-items-center">
     <h1 class="mr-3 pr-3 align-top border-right inline-block align-content-center">401</h1>
     <div class="inline-block align-middle">
         <h2 class="font-weight-normal lead" id="desc">Access to this resource is denied</h2>
