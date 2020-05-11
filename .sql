@@ -67,3 +67,30 @@ CREATE TABLE pemakaian_alatberat (
   updated_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   created_at datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
 )
+
+CREATE TABLE transaksi (
+  id_transaksi int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  id_cucian int NOT NULL FOREIGN KEY REFERENCES cucian(id_cucian),
+  id_supir int NOT NULL FOREIGN KEY REFERENCES supir_truk(id_supir),
+  id_pabrik int NOT NULL FOREIGN KEY REFERENCES pabrik(id_pabrik),
+  tanggal_transaksi DATE not null,
+  volume_pasir float,
+  harga_pabrik decimal(13,2),
+  volume_mahsun float,
+  harga_mahsun decimal(13,2),
+  volume_pemilikTruk float,
+  harga_pemilikTruk decimal(13,2),
+  bon_supir decimal(13,2),
+  total_modal decimal(13,2),
+  keterangan text,
+  updated_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  created_at datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+)
+
+create TABLE konstan (
+  id_konstan int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  rate_mahsun float,
+  updated_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  created_at datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+)
+
