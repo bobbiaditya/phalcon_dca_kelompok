@@ -5,11 +5,14 @@
 
     <style>
         #main {
-    height: 100vh;
-}
+            margin-top: 150px;
+        }
     </style>
 </head>
-<div class="d-flex justify-content-center align-items-center" id="main">
+<div class="d-flex justify-content-center align-items-center" id='main'>
+    <img src="img/500.png" style="width:300px;height:200px;">
+</div>
+<div class="d-flex justify-content-center align-items-center">
     <h1 class="mr-3 pr-3 align-top border-right inline-block align-content-center">500</h1>
     <div class="inline-block align-middle">
         <h2 class="font-weight-normal lead" id="desc">Server Error</h2>
