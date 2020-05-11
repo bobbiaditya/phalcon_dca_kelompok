@@ -110,14 +110,15 @@ class SecurityPlugin extends Injectable
 
         //Yang gak boleh diakses admin
         $privateResources = [
-            'supirtruk'         => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
-            'pabrik'            => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
-            'pemiliktruk'       => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
-            'user'              => ['index', 'tambah', 'hapus','master','register'],
-            'alatberat'     => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
-            'cucian'        => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
-            'user'          => ['index', 'tambah', 'proses', 'hapus', 'master'],
+            'supirtruk'             => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
+            'pabrik'                => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
+            'pemiliktruk'           => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
+            'user'                  => ['index', 'tambah', 'hapus','master','register'],
+            'alatberat'             => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
+            'cucian'                => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
+            'user'                  => ['index', 'tambah', 'proses', 'hapus', 'master'],
             'pemakaianalatberat'    => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
+            'transaksi'             => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
         ];
         foreach ($privateResources as $resource => $actions) {
             $acl->addComponent(new Component($resource), $actions);
@@ -138,6 +139,7 @@ class SecurityPlugin extends Injectable
         $adminResources = [
             'pemakaianalatberat'    => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
             'user'                  => ['admin'],
+            'transaksi'             => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
 
         ];
         foreach ($adminResources as $resource => $actions) {
