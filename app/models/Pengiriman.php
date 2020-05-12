@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Phalcon\Mvc\Model;
 
-class PemilikTruk extends Model
+class Pengiriman extends Model
 {
+    public $id_pengiriman;
     public $id_pemilik;
-    public $nama_pemilik;
+    public $id_pabrik;
+    public $harga_kirim;
     public $updated_at;
     public $created_at;
 
@@ -26,41 +28,26 @@ class PemilikTruk extends Model
         $this->setSchema('dbo');
 
         // Untuk mengeset nama tabel, default : nama class
-        $this->setSource('pemilik_truk');
-
-        $this->hasMany(
+        $this->setSource('pengiriman');
+ 
+        $this->belongsTo(
             'id_pemilik',
-            SupirTruk::class,
-            'id_pemilik',
-            [
-                'reusable' => true,
-                'alias'    => 'supir'
-            ]
-        );
-
-        $this->hasMany(
-            'id_pemilik',
-            Pengiriman::class,
+            PemilikTruk::class,
             'id_pemilik',
             [
                 'reusable' => true,
-                'alias'    => 'pengiriman'
+                'alias'    => 'pemilik'
             ]
         );
-
-        $this->hasManyToMany(
-            'id_pemilik',
-            SupirTruk::class,
-            'id_pemilik',
+        $this->belongsTo(
             'id_pabrik',
             Pabrik::class,
             'id_pabrik',
             [
                 'reusable' => true,
-                'alias'    => 'pemilikPengiriman',
+                'alias'    => 'pabrik'
             ]
         );
-        }
     }
 
     /**

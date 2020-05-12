@@ -40,6 +40,29 @@ class Pabrik extends Model
                 'alias'    => 'transaksi'
             ]
         );
+
+        $this->hasMany(
+            'id_pabrik',
+            Pengiriman::class,
+            'id_pabrik',
+            [
+                'reusable' => true,
+                'alias'    => 'pengiriman'
+            ]
+        );
+
+        $this->hasManyToMany(
+            'id_pabrik',
+            Pengiriman::class,
+            'id_pabrik',
+            'id_pemilik',
+            PemilikTruk::class,
+            'id_pemilik',
+            [
+                'reusable' => true,
+                'alias'    => 'pabrikPengiriman',
+            ]
+        );
     }
 
     /**
