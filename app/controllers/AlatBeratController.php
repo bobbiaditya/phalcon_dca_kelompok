@@ -103,7 +103,7 @@ class AlatBeratController extends ControllerBase
                     $f_nama=1;
                 }
             }
-            if($alat->nama_alatBerat == $nama ||$f_nama==1) {
+            if($f_nama==1) {
              
             
             $alat->assign(

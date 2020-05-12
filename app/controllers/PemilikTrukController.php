@@ -85,10 +85,10 @@ class PemilikTrukController extends ControllerBase
         {
             $pem = PemilikTruk::findFirstById_pemilik($id);
             $nama_pemilik = $this->request->getPost('nama_pemilik', 'string');
-            $checkNamaPemilik = PemilikTruk::findFirst("nama_pemilik = '$nama_pemilik'");
             $flag=0;
             if($pem->nama_pemilik != $nama_pemilik)
             {
+                $checkNamaPemilik = PemilikTruk::findFirst("nama_pemilik = '$nama_pemilik'");
                 if($checkNamaPemilik){
                     $this->flashSession->error('Nama sudah dipakai');
                     $this->response->redirect('/pemiliktruk/edit/'.$id);
