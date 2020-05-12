@@ -99,8 +99,6 @@
                                         </p>
                                     </a>
                                 </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ url('cucian') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
@@ -117,7 +115,16 @@
                                         </p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('pengiriman') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Pengiriman
+                                        </p>
+                                    </a>
+                                </li>
                             </ul>
+                            
                         </li>
                         </li>                       
                         {% endif%}

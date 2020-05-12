@@ -119,6 +119,7 @@ class SecurityPlugin extends Injectable
             'user'                  => ['index', 'tambah', 'proses', 'hapus', 'master'],
             'pemakaianalatberat'    => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
             'transaksi'             => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
+            'pengiriman'            => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
         ];
         foreach ($privateResources as $resource => $actions) {
             $acl->addComponent(new Component($resource), $actions);
@@ -135,7 +136,7 @@ class SecurityPlugin extends Injectable
             $acl->addComponent(new Component($resource), $actions);
         }
         
-        // yang boelh diakses admin
+        // yang boleh diakses admin
         $adminResources = [
             'pemakaianalatberat'    => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
             'user'                  => ['admin'],

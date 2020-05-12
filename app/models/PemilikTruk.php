@@ -61,7 +61,7 @@ class PemilikTruk extends Model
             ]
         );
         }
-    }
+    
 
     /**
      *  Dipanggil setiap pembuatan instace class baru
