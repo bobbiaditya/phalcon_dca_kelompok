@@ -18,7 +18,7 @@
             <form method="post" action="{{url('transaksi/proses')}}">
                 <div class="form-group">
                     <label>Tanggal Transaksi</label>
-                    <input type="date" name="nama_supir" autocomplete="off" class="form-control" value="">
+                    <input type="date" name="tanggal_transaksi" autocomplete="off" class="form-control" value="">
                 </div>
                 <div class="form-group">         
                     <label>Nama pabrik</label>
