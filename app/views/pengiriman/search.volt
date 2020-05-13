@@ -11,6 +11,7 @@
         </div>
         <div class="card-header">
             <a href="{{url('/pengiriman/tambah')}}" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus" style="padding-right: 7px;"></span>Input</a>
+            <a href="{{url('pengiriman')}}" class="btn btn-secondary btn-sm float-right">Kembali</a>
         </div>
         <div class="card-header">
             <form action="/pengiriman/search" autocomplete="off" method="post">

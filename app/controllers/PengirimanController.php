@@ -13,6 +13,8 @@ class PengirimanController extends ControllerBase
     public function indexAction()
     {
         $this->view->peng = Pengiriman::find();
+        $this->view->pemilik = PemilikTruk::find();
+        $this->view->pabrik = Pabrik::find();
     }
 
     public function tambahAction()
@@ -124,5 +126,68 @@ class PengirimanController extends ControllerBase
         }
 
         $this->response->redirect('/pengiriman');
+    }
+    public function searchAction()
+    {
+        $flag0=0;
+        $flag1=0;
+        $this->view->pemilik = PemilikTruk::find();
+        $this->view->pabrik = Pabrik::find();
+        if($this->request->getPost('id_pabrik'))
+        {
+            $id_pab = $this->request->getPost('id_pabrik');
+            // $id_pab = Pabrik::findFirstByNama_pabrik($nama_pab);
+            $flag0=1;
+
+        }
+        if($this->request->getPost('id_pemilik'))
+        {
+            $id_pem = $this->request->getPost('id_pemilik');
+            // $id_pem = PemilikTruk::findFirstByNama_pemilik($nama_pem);
+            $flag1=1;
+        }
+
+        if($flag0)
+        {
+            if($flag1)
+            {
+                $peng = Pengiriman::query()
+                ->where('id_pemilik = :id_pem:')
+                ->andWhere('id_pabrik = :id_pab:')
+                ->bind(
+                    [
+                        'id_pab' => $id_pab,
+                        'id_pem'  => $id_pem,
+                    ]
+                )
+                ->execute();
+            }
+            else
+            {
+                $peng = Pengiriman::query()
+                ->Where('id_pabrik = :id_pab:')
+                ->bind(
+                    [
+                        'id_pab' => $id_pab,
+                    ]
+                )
+                ->execute();
+            }
+            
+        }
+        else
+        {
+            $peng = Pengiriman::query()
+            ->where('id_pemilik = :id_pem:')
+            ->bind(
+                [
+                    'id_pem'  => $id_pem,
+                ]
+            )
+            ->execute();
+        }
+        $this->view->peng = $peng;   
+
+
     }
 }
