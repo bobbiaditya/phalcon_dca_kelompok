@@ -101,6 +101,7 @@ create TABLE pengiriman (
   id_pabrik int NOT NULL FOREIGN KEY REFERENCES pabrik(id_pabrik),
   id_pemilik int NOT NULL FOREIGN KEY REFERENCES pemilik_truk(id_pemilik),
   harga_kirim decimal(13,2),
+  harga_supir decimal(13,2),
   updated_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   created_at datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
 )
