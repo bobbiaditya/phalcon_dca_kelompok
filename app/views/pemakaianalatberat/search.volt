@@ -6,12 +6,13 @@
     <div class="container">
         <div class="card">
             <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
-                <strong>PEMAKAIAN ALAT BERAT</strong>
+                <strong>PEMAKAIAN ALAT BERAT (hasil pencarian)</strong>
             </div>
             {{ flashSession.output() }}
             <div class="card-header">
                 <a href="{{ url('pemakaianalatberat/tambah') }}" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus"
                         style="padding-right: 7px;"></span>Input</a>
+                <a href="{{url('pemakaianalatberat')}}" class="btn btn-secondary btn-sm float-right">Kembali</a>
             </div>
             <div class="card-header">
                 <form action="/pemakaianalatberat/search" autocomplete="off" method="post">
