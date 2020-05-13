@@ -19,7 +19,7 @@ class TransaksiValidation extends Validation
         );
 
         $this->add(
-            'id_pabrik',
+            'nama_pabrik',
             new PresenceOf(
                 [
                     'message' => 'Pabrik harus ada yang dipilih',
@@ -28,7 +28,7 @@ class TransaksiValidation extends Validation
         );
 
         $this->add(
-            'id_cucian',
+            'nama_cucian',
             new PresenceOf(
                 [
                     'message' => 'Tempat cucian harus ada yang dipilih',
@@ -37,7 +37,7 @@ class TransaksiValidation extends Validation
         );
 
         $this->add(
-            'id_supir',
+            'nama_supir',
             new PresenceOf(
                 [
                     'message' => 'Supir harus ada yang dipilih',

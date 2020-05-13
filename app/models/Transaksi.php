@@ -48,7 +48,7 @@ class Transaksi extends Model
         );
         $this->belongsTo(
             'id_pabrik',
-            Cucian::class,
+            Pabrik::class,
             'id_pabrik',
             [
                 'reusable' => true,
