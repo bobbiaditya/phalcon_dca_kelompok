@@ -7,11 +7,12 @@
 <div class="container">
     <div class="card">
         <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
-            <strong>Supir Truk</strong>
+            <strong>Supir Truk ({{supir[0].pemilik.nama_pemilik}})</strong>
         </div>
         <div class="card-header">
             <a href="{{url('/supirtruk/tambah')}}" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus"
                     style="padding-right: 7px;"></span>Input</a>
+            <a href="{{url('supirtruk')}}" class="btn btn-secondary btn-sm float-right">Kembali</a>
         </div>
         <div class="card-header text-success text-center">
             <form action="/supirtruk/search" autocomplete="off" method="post">

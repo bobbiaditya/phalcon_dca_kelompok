@@ -25,8 +25,8 @@ class SupirTrukController extends ControllerBase
         //     ]
         // );
         // $page = $paginator->paginate();
-
         $this->view->supir = SupirTruk::find();
+        $this->view->pemilik = PemilikTruk::find();
     }
 
     public function tambahAction()
@@ -154,6 +154,16 @@ class SupirTrukController extends ControllerBase
         }
 
         $this->response->redirect('/supirtruk');
+    }
+
+    public function searchAction()
+    {
+        $nama_pemilik = $this->request->getPost('nama_pemilik', 'string');
+        $pem = PemilikTruk::findFirstByNama_pemilik($nama_pemilik);
+        $this->view->supir = SupirTruk::findById_pemilik($pem->id_pemilik);
+        $this->view->pemilik = PemilikTruk::find();
+        // $this->view->pick('supirtruk/index');
+        // $this->response->redirect('/supirtruk');
     }
 }
 

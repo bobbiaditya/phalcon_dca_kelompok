@@ -110,7 +110,7 @@ class SecurityPlugin extends Injectable
 
         //Yang gak boleh diakses admin
         $privateResources = [
-            'supirtruk'             => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
+            'supirtruk'             => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus', 'search'],
             'pabrik'                => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
             'pemiliktruk'           => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
             'user'                  => ['index', 'tambah', 'hapus','master','register'],
