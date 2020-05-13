@@ -5,12 +5,27 @@ namespace App\Controllers;
 use App\Models\SupirTruk;
 use App\Models\PemilikTruk;
 use App\Validation\SupirValidation;
+use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 date_default_timezone_set("Asia/Bangkok");
 class SupirTrukController extends ControllerBase
 {
 
     public function indexAction()
     {
+        // $currentPage = $this->request->getQuery('page', 'int', 1);
+
+        // $paginator   = new PaginatorModel(
+        //     [
+        //         'model'  => SupirTruk::class,
+        //         "parameters" => [
+        //               "order" => "nama_supir"
+        //         ],
+        //         'limit' => 2,
+        //         'page'  => $currentPage,
+        //     ]
+        // );
+        // $page = $paginator->paginate();
+
         $this->view->supir = SupirTruk::find();
     }
 
