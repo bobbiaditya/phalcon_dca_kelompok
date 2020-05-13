@@ -40,6 +40,10 @@
                     <input type="text" name="harga_kirim" autocomplete="off" class="form-control" placeholder="Harga Kirim">
                 </div>
                 <div class="form-group">
+                    <label>Bon Supir</label>
+                    <input type="text" name="harga_supir" autocomplete="off" class="form-control" placeholder="Bon Supir">
+                </div>
+                <div class="form-group">
                     <input type="submit" class="btn btn-success" value="Simpan">
                 </div>
 

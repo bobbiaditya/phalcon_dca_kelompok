@@ -10,6 +10,7 @@ class Pengiriman extends Model
     public $id_pemilik;
     public $id_pabrik;
     public $harga_kirim;
+    public $harga_supir;
     public $updated_at;
     public $created_at;
 

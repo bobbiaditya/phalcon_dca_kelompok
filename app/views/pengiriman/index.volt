@@ -22,6 +22,7 @@
                         <th>Nama Pabrik</th>
                         <th>Nama Pemilik</th>
                         <th>Harga Kirim</th>
+                        <th>Bon Supir</th>
                         <th>OPSI</th>
                     </tr>
                 </thead>
@@ -31,6 +32,7 @@
                         <td>{{p.pabrik.nama_pabrik}}</td>
                         <td>{{p.pemilik.nama_pemilik}}</td>
                         <td>{{p.harga_kirim}}</td>
+                        <td>{{p.harga_supir}}</td>
                         <td>
                             <a href="{{url('pengiriman/edit/'~p.id_pengiriman) }}" class="btn btn-warning btn-sm">Edit</a>
                             <a href="{{url('pengiriman/hapus/'~p.id_pengiriman) }}" class="btn btn-danger btn-sm">Hapus</a>

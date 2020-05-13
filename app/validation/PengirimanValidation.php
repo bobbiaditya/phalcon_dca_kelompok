@@ -36,11 +36,31 @@ class PengirimanValidation extends Validation
                 ]
             )
         );
+
         $this->add(
             'harga_kirim',
             new Numericality(
                 [
-                    'message' => 'Harga pasir dalam bentuk angka',
+                    'message' => 'Harga kirim dalam bentuk angka',
+                ]
+            )
+        );
+
+        $this->add(
+            'harga_supir',
+            new PresenceOf(
+                [
+                    'message' => 'Harga supir harus diisikan',
+                    'cancelOnFail' => true
+                ]
+            )
+        );
+
+        $this->add(
+            'harga_supir',
+            new Numericality(
+                [
+                    'message' => 'Harga supir dalam bentuk angka',
                 ]
             )
         );

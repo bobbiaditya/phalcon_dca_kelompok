@@ -41,7 +41,8 @@ class PengirimanController extends ControllerBase
                 [
                     'id_pabrik',
                     'id_pemilik',
-                    'harga_kirim'
+                    'harga_kirim',
+                    'harga_supir'
                 ]
             );
             $peng->updated_at = date('Y-m-d h:i:sa');
@@ -98,7 +99,8 @@ class PengirimanController extends ControllerBase
                 [
                     'id_pabrik',
                     'id_pemilik',
-                    'harga_kirim'
+                    'harga_kirim',
+                    'harga_supir'
                 ]
             );
             $peng->updated_at = date('Y-m-d h:i:sa');

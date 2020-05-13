@@ -41,6 +41,11 @@
                     <input type="text" autocomplete="off" name="harga_kirim" class="form-control" placeholder="Harga Kirim"
                         value="{{peng.harga_kirim}}">
                 </div>
+                <div class="form-group">
+                    <label>Bon Supir</label>
+                    <input type="text" autocomplete="off" name="harga_supir" class="form-control" placeholder="Bon Supir"
+                        value="{{peng.harga_supir}}">
+                </div>
 
 
                 <div class="form-group">
