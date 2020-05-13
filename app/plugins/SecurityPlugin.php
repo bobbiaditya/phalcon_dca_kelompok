@@ -118,8 +118,8 @@ class SecurityPlugin extends Injectable
             'cucian'                => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
             'user'                  => ['index', 'tambah', 'proses', 'hapus', 'master'],
             'pemakaianalatberat'    => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus', 'search'],
-            'transaksi'             => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
-            'pengiriman'            => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
+            'transaksi'             => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus', 'search'],
+            'pengiriman'            => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus', 'search'],
         ];
         foreach ($privateResources as $resource => $actions) {
             $acl->addComponent(new Component($resource), $actions);
