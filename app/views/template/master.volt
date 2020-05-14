@@ -157,6 +157,16 @@
                                 </li>
                             </ul>
                         </li>
+                        {% if session.get('auth')['tipe'] ==='master' %}
+                        <li class="nav-item">
+                            <a href="{{url('keuangan')}}" class="nav-link">
+                              <i class="nav-icon fas fa-file-export"></i>
+                              <p>
+                                Laporan Keuangan
+                              </p>
+                            </a>
+                        </li>
+                        {% endif%}
                     </ul>
                 </nav>
             </div>
