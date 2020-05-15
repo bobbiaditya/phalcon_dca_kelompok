@@ -166,6 +166,14 @@
                               </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{url('mahsun')}}" class="nav-link">
+                              <i class="nav-icon fas fa-file-export"></i>
+                              <p>
+                                Laporan Mahsun
+                              </p>
+                            </a>
+                        </li>
                         {% endif%}
                     </ul>
                 </nav>
