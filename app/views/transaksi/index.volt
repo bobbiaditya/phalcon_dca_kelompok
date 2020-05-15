@@ -49,6 +49,7 @@
                         <th>Volume Pemilik Truk</th>
                         <th>Harga Pemilik Truk</th>
                         <th>Bon Supir</th>
+                        <th>Asal</th>
                         <th>Total Modal</th>
                         <th>Keterangan</th>
                         <th>Opsi</th>
@@ -67,6 +68,7 @@
                         <td>{{p.volume_pemilikTruk}}</td>
                         <td>{{p.harga_pemilikTruk}}</td>
                         <td>{{p.bon_supir}}</td>
+                        <td>{{p.cucian.nama_cucian}}</td>
                         <td>{{p.total_modal}}</td>
                         <td>{{p.keterangan}}</td>
                         <td>

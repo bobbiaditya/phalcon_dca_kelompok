@@ -121,6 +121,7 @@ class SecurityPlugin extends Injectable
             'transaksi'             => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus', 'search'],
             'pengiriman'            => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus', 'search'],
             'keuangan'              => ['index'],
+            'mahsun'                => ['index','laporan'],
         ];
         foreach ($privateResources as $resource => $actions) {
             $acl->addComponent(new Component($resource), $actions);
