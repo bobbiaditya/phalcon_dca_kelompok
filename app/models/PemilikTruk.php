@@ -50,7 +50,7 @@ class PemilikTruk extends Model
 
         $this->hasManyToMany(
             'id_pemilik',
-            SupirTruk::class,
+            Pengiriman::class,
             'id_pemilik',
             'id_pabrik',
             Pabrik::class,
