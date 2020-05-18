@@ -37,7 +37,7 @@
                 <table class="table table-bordered table-hover table-striped table-head-fixed">
                     <thead>
                         <tr>
-                            <th>Nama Alat Berat</th>
+                            <th>Alat Berat</th>
                             <th>Tanggal Mulai</th>
                             <th>Tanggal Selesai</th>
                             <th>Jam Pakai</th>

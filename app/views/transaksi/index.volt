@@ -39,15 +39,15 @@
             <table class="table table-bordered table-hover table-striped table-head-fixed">
                 <thead>
                     <tr>
-                        <th>Tanggal Transaksi</th>
+                        <th>Tanggal</th>
                         <th>Pabrik</th>
                         <th>Supir</th>
-                        <th>Volume Pasir</th>
-                        <th>Harga Pabrik</th>
-                        <th>Volume Mahsun</th>
+                        <th>Pasir(m3)</th>
+                        <th>Harga Pasir</th>
+                        <th>Mahsun(m3)</th>
                         <th>Harga Mahsun</th>
-                        <th>Volume Pemilik Truk</th>
-                        <th>Harga Pemilik Truk</th>
+                        <th>Pemilik Truk(m3)</th>
+                        <th>Harga Pemilik</th>
                         <th>Bon Supir</th>
                         <th>Asal</th>
                         <th>Total Modal</th>

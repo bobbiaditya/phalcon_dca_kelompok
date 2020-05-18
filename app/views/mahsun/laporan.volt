@@ -36,10 +36,10 @@
             <table class="table table-bordered table-hover table-striped table-head-fixed">
                 <thead>
                     <tr>
-                        <th>Tanggal Transaksi</th>
+                        <th>Tanggal</th>
                         <th>NoPol</th>
                         <th>Supir</th>
-                        <th>Volume Mahsun</th>
+                        <th>Mahsun(m3)</th>
                         <th>Harga Mahsun</th>
                         <th>Asal</th>
                         <th>Tujuan</th>
@@ -71,7 +71,7 @@
                     <tr>
                         <th>Tanggal Mulai</th>
                         <th>Tanggal Selesai</th>
-                        <th>Nama Alat Berat</th>
+                        <th>Alat Berat</th>
                         <th>Jam Pakai</th>
                         <th>Harga Pakai</th>
                     </tr>
