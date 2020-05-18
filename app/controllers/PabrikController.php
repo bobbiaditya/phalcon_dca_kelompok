@@ -89,7 +89,7 @@ class PabrikController extends ControllerBase
             {
                 $this->flashSession->error($message->getMessage());
             }
-            $this->response->redirect('/pabrik/edit');
+            $this->response->redirect('/pabrik/edit/'.$id);
         }
         else
         {
