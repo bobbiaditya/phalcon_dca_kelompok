@@ -151,40 +151,33 @@ class PengirimanController extends ControllerBase
         {
             if($flag1)
             {
-                $peng = Pengiriman::query()
-                ->where('id_pemilik = :id_pem:')
-                ->andWhere('id_pabrik = :id_pab:')
-                ->bind(
-                    [
+                $peng = Pengiriman::find([
+                    'conditions' => 'id_pemilik = :id_pem: AND '. 'id_pabrik = :id_pab:',
+                    'bind' => [
                         'id_pab' => $id_pab,
                         'id_pem'  => $id_pem,
-                    ]
-                )
-                ->execute();
+                    ],
+                ]);
             }
             else
             {
-                $peng = Pengiriman::query()
-                ->Where('id_pabrik = :id_pab:')
-                ->bind(
-                    [
+                $peng = Pengiriman::find([
+                    'conditions' => 'id_pabrik = :id_pab:',
+                    'bind' => [
                         'id_pab' => $id_pab,
-                    ]
-                )
-                ->execute();
+                    ],
+                ]);
             }
             
         }
         else
         {
-            $peng = Pengiriman::query()
-            ->where('id_pemilik = :id_pem:')
-            ->bind(
-                [
+            $peng = Pengiriman::find([
+                'conditions' => 'id_pemilik = :id_pem:',
+                'bind' => [
                     'id_pem'  => $id_pem,
-                ]
-            )
-            ->execute();
+                ],
+            ]);
         }
         $this->view->peng = $peng;   
 
