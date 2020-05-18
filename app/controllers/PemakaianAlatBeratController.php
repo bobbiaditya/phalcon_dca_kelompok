@@ -152,6 +152,7 @@ class PemakaianAlatBeratController extends ControllerBase
                         'tgl_awal' => $tgl_awal,
                         'tgl_akhir'  => $tgl_akhir,
                     ],
+                    'order'      => 'tanggal_mulai desc'
                 ]);
             }
             else
@@ -161,6 +162,7 @@ class PemakaianAlatBeratController extends ControllerBase
                     'bind' => [
                         'tgl_awal' => $tgl_awal,
                     ],
+                    'order'      => 'tanggal_mulai desc'
                 ]);
             }
             
@@ -172,6 +174,7 @@ class PemakaianAlatBeratController extends ControllerBase
                 'bind' => [
                     'tgl_akhir'  => $tgl_akhir,
                 ],
+                'order'      => 'tanggal_mulai desc'
             ]);
         }
         $this->view->pemakaian = $pemakaian;   

@@ -33,69 +33,61 @@ class MahsunController extends ControllerBase
         {
             if($flag1)
             {
-                $trans = Transaksi::query()
-                ->where('tanggal_transaksi < :tgl_akhir:')
-                ->andWhere('tanggal_transaksi > :tgl_awal:')
-                ->bind(
-                    [
+                $trans = Transaksi::find([
+                    'conditions' => 'tanggal_transaksi < :tgl_akhir: AND '. 'tanggal_transaksi > :tgl_awal:',
+                    'bind' => [
                         'tgl_awal' => $tgl_awal,
                         'tgl_akhir'  => $tgl_akhir,
-                    ]
-                )
-                ->execute();
+                    ],
+                    'order'      => 'tanggal_transaksi desc',
+                ]);
 
-                $pemakaian = PemakaianAlatBerat::query()
-                ->where('tanggal_selesai < :tgl_akhir:')
-                ->andWhere('tanggal_selesai > :tgl_awal:')
-                ->bind(
-                    [
+                $pemakaian = PemakaianAlatBerat::find([
+                    'conditions' => 'tanggal_selesai < :tgl_akhir: AND '. 'tanggal_selesai > :tgl_awal:',
+                    'bind' => [
                         'tgl_awal' => $tgl_awal,
                         'tgl_akhir'  => $tgl_akhir,
-                    ]
-                )
-                ->execute();
+                    ],
+                    'order'      => 'tanggal_mulai desc'
+                ]);
             }
             else
             {
-                $trans = Transaksi::query()
-                ->Where('tanggal_transaksi > :tgl_awal:')
-                ->bind(
-                    [
+                $trans = Transaksi::find([
+                    'conditions' => 'tanggal_transaksi > :tgl_awal:',
+                    'bind' => [
                         'tgl_awal' => $tgl_awal,
-                    ]
-                )
-                ->execute();
+                    ],
+                    'order'      => 'tanggal_transaksi desc'
+                ]);
 
-                $pemakaian = PemakaianAlatBerat::query()
-                ->Where('tanggal_selesai > :tgl_awal:')
-                ->bind(
-                    [
+                $pemakaian = PemakaianAlatBerat::find([
+                    'conditions' => 'tanggal_selesai > :tgl_awal:',
+                    'bind' => [
                         'tgl_awal' => $tgl_awal,
-                    ]
-                )
-                ->execute();
+                    ],
+                    'order'      => 'tanggal_mulai desc'
+                ]);
             }
             
         }
         else
         {
-            $trans = Transaksi::query()
-            ->where('tanggal_transaksi < :tgl_akhir:')
-            ->bind(
-                [
+            $trans = Transaksi::find([
+                'conditions' => 'tanggal_transaksi < :tgl_akhir:',
+                'bind' => [
                     'tgl_akhir'  => $tgl_akhir,
-                ]
-            )
-            ->execute();
+                ],
+                'order'      => 'tanggal_transaksi desc',
+            ]);
 
-            $pemakaian = PemakaianAlatBerat::query()
-            ->where('tanggal_selesai < :tgl_akhir:')
-            ->bind(
-                [
+            $pemakaian = PemakaianAlatBerat::find([
+                'conditions' => 'tanggal_selesai < :tgl_akhir:',
+                'bind' => [
                     'tgl_akhir'  => $tgl_akhir,
-                ]
-            )
-            ->execute();
+                ],
+                'order'      => 'tanggal_mulai desc'
+            ]);
         }
         $this->view->trans = $trans;   
         $this->view->pemakaian = $pemakaian;
