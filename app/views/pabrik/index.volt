@@ -32,7 +32,7 @@
                     <tr>
                         <td>{{ p.nama_pabrik }}</td>
                         <td>{{ p.kode_pabrik }}</td>
-                        <td>{{ p.harga_pasir }}</td>
+                        <td>{{ p.harga_pasir|number_format(0,'','.') }}</td>
                         <td>
                             <a href="{{url('pabrik/edit/'~p.id_pabrik) }}" class="btn btn-warning btn-sm">Edit</a>
                             <a href="{{url('pabrik/hapus/'~p.id_pabrik) }}" class="btn btn-danger btn-sm">Hapus</a>

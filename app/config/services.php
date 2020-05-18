@@ -64,7 +64,8 @@ $di->setShared('view', function () {
                 'always' => true,
                 'stat' => 'true'
             ]);
-
+            $compiler = $volt->getCompiler();
+            $compiler->addFilter('number_format', 'number_format');
             return $volt;
         },
         '.phtml' => PhpEngine::class
