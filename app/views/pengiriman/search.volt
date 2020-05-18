@@ -35,7 +35,9 @@
                     <div class="col-auto">
                         <input type="submit" class="btn btn-info" value="Cari">
                     </div>
-                
+                </div>
+                </form>
+        </div>
         <div class="card-header text-success text-center">
             {{ flashSession.output() }}
         </div>

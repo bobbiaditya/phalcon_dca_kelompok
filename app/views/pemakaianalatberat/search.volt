@@ -8,7 +8,6 @@
             <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
                 <strong>PEMAKAIAN ALAT BERAT (hasil pencarian)</strong>
             </div>
-            {{ flashSession.output() }}
             <div class="card-header">
                 <a href="{{ url('pemakaianalatberat/tambah') }}" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus"
                         style="padding-right: 7px;"></span>Input</a>
@@ -33,6 +32,9 @@
                             <input type="submit" class="btn btn-info" value="Cari">
                         </div>
                     </div>
+            </div>
+            <div class="card-header text-success text-center">
+                {{ flashSession.output() }}
             </div>
             <div class="card-body table-responsive p-0" style="height: 500px;">
                 <table class="table table-bordered table-hover table-striped table-head-fixed">

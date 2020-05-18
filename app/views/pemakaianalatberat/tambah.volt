@@ -8,10 +8,12 @@
         <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
             <strong>TAMBAH DATA</strong>
         </div>
-        {{ flashSession.output() }}
         <div class="card-header">
             <a href="{{url('/pemakaianalatberat')}}" class="btn btn-secondary">Kembali</a>
 
+        </div>
+        <div class="card-header text-danger text-center">
+            {{ flashSession.output() }}
         </div>
         <div class="card-body">
             <form autocomplete="off" method="post" action="{{url('/pemakaianalatberat/proses')}}">
