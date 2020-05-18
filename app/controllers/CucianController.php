@@ -125,6 +125,10 @@ class CucianController extends ControllerBase
                     $flag0=1;
                 }
             }
+            else
+            {
+                $flag0=1;
+            }
             if($cuc->kode_cucian != $kode_cucian)
             {
                 $checkKodeCucian = Cucian::findFirst("kode_cucian = '$kode_cucian'");
@@ -136,6 +140,10 @@ class CucianController extends ControllerBase
                 {
                     $flag1=1;
                 }
+            }
+            else
+            {
+                $flag1=1;
             }
             if($flag0 && $flag1)
             {
