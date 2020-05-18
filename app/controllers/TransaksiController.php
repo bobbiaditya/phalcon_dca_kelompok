@@ -15,7 +15,9 @@ class TransaksiController extends ControllerBase
 {
     public function indexAction()
     {
-        $this->view->trans = Transaksi::find();
+        $this->view->trans = Transaksi::find([
+            'order'      => 'tanggal_transaksi desc'
+        ]);
     }
 
     public function tambahAction()
@@ -193,6 +195,7 @@ class TransaksiController extends ControllerBase
                         'tgl_awal' => $tgl_awal,
                         'tgl_akhir'  => $tgl_akhir,
                     ],
+                    'order'      => 'tanggal_transaksi desc',
                 ]);
             }
             else
@@ -202,6 +205,7 @@ class TransaksiController extends ControllerBase
                     'bind' => [
                         'tgl_awal' => $tgl_awal,
                     ],
+                    'order'      => 'tanggal_transaksi desc'
                 ]);
             }
             
@@ -213,6 +217,7 @@ class TransaksiController extends ControllerBase
                 'bind' => [
                     'tgl_akhir'  => $tgl_akhir,
                 ],
+                'order'      => 'tanggal_transaksi desc',
             ]);
         }
         $this->view->trans = $trans;   
