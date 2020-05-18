@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label>Nama Pemilik Truk</label>
                     <input type="text" name="nama_pemilik" autocomplete="off" class="form-control" placeholder="Nama Pemilik Truk">
-
+                </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-success" value="Simpan">
                 </div>

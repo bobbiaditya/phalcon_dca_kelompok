@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <label>Kode Pabrik</label>
                     <input type="text" name="kode_pabrik" autocomplete="off" class="form-control" placeholder="Kode Pabrik">
-
+                </div>
                 <div class="form-group">
                     <label>Harga pasir</label>
                     <input type="text" name="harga_pasir" class="form-control" placeholder="Harga Pasir" autocomplete="off">

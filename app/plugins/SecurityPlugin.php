@@ -119,7 +119,7 @@ class SecurityPlugin extends Injectable
             'user'                  => ['index', 'tambah', 'proses', 'hapus', 'master'],
             'pemakaianalatberat'    => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus', 'search'],
             'transaksi'             => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus', 'search'],
-            'pengiriman'            => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus', 'search','ajax'],
+            'pengiriman'            => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus', 'search'],
             'keuangan'              => ['index'],
             'mahsun'                => ['index','laporan'],
         ];
