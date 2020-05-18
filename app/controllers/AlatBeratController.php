@@ -103,7 +103,10 @@ class AlatBeratController extends ControllerBase
                     $flag=1;
                 }
             }
-            else
+            else {     
+                $flag=1;
+            }
+            if($flag)
             {
                 $al->assign(
                     $this->request->getPost(),
