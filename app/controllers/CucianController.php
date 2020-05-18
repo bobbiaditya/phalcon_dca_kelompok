@@ -111,39 +111,26 @@ class CucianController extends ControllerBase
             $cuc = Cucian::findFirstById_cucian($id);
             $nama_cucian = $this->request->getPost('nama_cucian', 'string');
             $kode_cucian = $this->request->getPost('kode_cucian', 'string');
-            $flag0=0;
-            $flag1=0;
+            $flag0=1;
+            $flag1=1;
             if($cuc->nama_cucian != $nama_cucian)
             {
                 $checkNamaCucian = Cucian::findFirst("nama_cucian = '$nama_cucian'");
                 if($checkNamaCucian){
+                    $flag0=0;
                     $this->flashSession->error('Nama Cucian sudah dipakai');
                     $this->response->redirect('/cucian/edit/'.$id);
                 }
-                else
-                {
-                    $flag0=1;
-                }
             }
-            else
-            {
-                $flag0=1;
-            }
+            
             if($cuc->kode_cucian != $kode_cucian)
             {
                 $checkKodeCucian = Cucian::findFirst("kode_cucian = '$kode_cucian'");
                 if($checkKodeCucian){
+                    $flag1=0;
                     $this->flashSession->error('Kode Cucian sudah dipakai');
                     $this->response->redirect('/cucian/edit/'.$id);
                 }
-                else
-                {
-                    $flag1=1;
-                }
-            }
-            else
-            {
-                $flag1=1;
             }
             if($flag0 && $flag1)
             {

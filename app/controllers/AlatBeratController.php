@@ -90,21 +90,15 @@ class AlatBeratController extends ControllerBase
         {
             $al = AlatBerat::findFirstById_alatBerat($id);
             $nama_alatBerat = $this->request->getPost('nama_alatBerat', 'string');
-            $flag=0;
+            $flag=1;
             if($al->nama_alatBerat != $nama_alatBerat)
             {
                 $checkNamaAlat = AlatBerat::findFirst("nama_alatBerat = '$nama_alatBerat'");
                 if($checkNamaAlat){
+                    $flag=0;
                     $this->flashSession->error('Nama sudah dipakai');
                     $this->response->redirect('/alatberat/edit/'.$id);
                 }
-                else
-                {
-                    $flag=1;
-                }
-            }
-            else {     
-                $flag=1;
             }
             if($flag)
             {
