@@ -187,40 +187,33 @@ class TransaksiController extends ControllerBase
         {
             if($flag1)
             {
-                $trans = Transaksi::query()
-                ->where('tanggal_transaksi < :tgl_akhir:')
-                ->andWhere('tanggal_transaksi > :tgl_awal:')
-                ->bind(
-                    [
+                $trans = Transaksi::find([
+                    'conditions' => 'tanggal_transaksi < :tgl_akhir: AND '. 'tanggal_transaksi > :tgl_awal:',
+                    'bind' => [
                         'tgl_awal' => $tgl_awal,
                         'tgl_akhir'  => $tgl_akhir,
-                    ]
-                )
-                ->execute();
+                    ],
+                ]);
             }
             else
             {
-                $trans = Transaksi::query()
-                ->Where('tanggal_transaksi > :tgl_awal:')
-                ->bind(
-                    [
+                $trans = Transaksi::find([
+                    'conditions' => 'tanggal_transaksi > :tgl_awal:',
+                    'bind' => [
                         'tgl_awal' => $tgl_awal,
-                    ]
-                )
-                ->execute();
+                    ],
+                ]);
             }
             
         }
         else
         {
-            $trans = Transaksi::query()
-            ->where('tanggal_transaksi < :tgl_akhir:')
-            ->bind(
-                [
+            $trans = Transaksi::find([
+                'conditions' => 'tanggal_transaksi < :tgl_akhir:',
+                'bind' => [
                     'tgl_akhir'  => $tgl_akhir,
-                ]
-            )
-            ->execute();
+                ],
+            ]);
         }
         $this->view->trans = $trans;   
 
