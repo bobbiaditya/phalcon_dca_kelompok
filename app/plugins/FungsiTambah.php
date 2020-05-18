@@ -30,7 +30,7 @@ class FungsiTambah
 		'Nov',
 		'Des'
         );
-        $pecahkan = explode('-', $tanggal);
+        $pecahkan = explode('-', $argument);
         
         // variabel pecahkan 0 = tanggal
         // variabel pecahkan 1 = bulan

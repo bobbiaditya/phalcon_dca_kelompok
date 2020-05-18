@@ -51,7 +51,7 @@
                     {% set sumbon = sumbon+p.bon_supir%}
                     {% set sumpasir = sumpasir+p.harga_mahsun%}
                     <tr>
-                        <td>{{p.tanggal_transaksi}}</td>
+                        <td>{{p.tanggal_transaksi|tgl}}</td>
                         <td>{{p.supir.nopol}}</td>
                         <td>{{p.supir.nama_supir}}</td>
                         <td>{{p.volume_mahsun|number_format(2,',','.')}}</td>
@@ -80,8 +80,8 @@
                     {% for p in pemakaian %}
                     {% set sumalat = sumalat+p.harga_pakai%}
                     <tr>
-                        <td>{{ p.tanggal_mulai }}</td>
-                        <td>{{ p.tanggal_selesai }}</td>
+                        <td>{{ p.tanggal_mulai|tgl }}</td>
+                        <td>{{ p.tanggal_selesai|tgl }}</td>
                         <td>{{ p.alat.nama_alatBerat }}</td>
                         <td>{{ p.jam_pakai }}</td>
                         <td>{{ p.harga_pakai|number_format(0,'','.') }}</td>
