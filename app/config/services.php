@@ -66,6 +66,10 @@ $di->setShared('view', function () {
             ]);
             $compiler = $volt->getCompiler();
             $compiler->addFilter('number_format', 'number_format');
+            $compiler->addFilter('tgl', function($resolvedArgs, $exprArgs)
+            {
+                return 'App\Plugins\FungsiTambah::tgl('.$resolvedArgs.')';
+            });
             return $volt;
         },
         '.phtml' => PhpEngine::class
