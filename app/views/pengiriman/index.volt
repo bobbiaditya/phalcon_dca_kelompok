@@ -34,10 +34,12 @@
                     <div class="col-auto">
                         <input type="submit" class="btn btn-info" value="Cari">
                     </div>
-                
-        <div class="card-header text-success text-center">
-            {{ flashSession.output() }}
+                </div>
+                </form>
         </div>
+            <div class="card-header text-success text-center">
+                {{ flashSession.output() }}
+            </div>
         <div class="card-body table-responsive p-0" style="height: 500px;">
             <table class="table table-bordered table-hover table-striped table-head-fixed">
                 <thead>

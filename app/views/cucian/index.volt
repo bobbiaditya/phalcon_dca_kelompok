@@ -8,13 +8,15 @@
             <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
                 <strong>CUCIAN</strong>
             </div>
-                {{ flashSession.output() }}
                 
             <!-- This is an alert box. -->
             <div class="card-header">
                 <a href="{{ url('cucian/tambah') }}" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus"
                         style="padding-right: 7px;"></span>Input</a>
                
+            </div>
+            <div class="card-header text-success text-center">
+                {{ flashSession.output() }}
             </div>
             <div class="card-body table-responsive p-0" style="height: 500px;">
                 <table class="table table-bordered table-hover table-striped table-head-fixed">
