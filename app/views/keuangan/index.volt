@@ -12,7 +12,7 @@
               <span class="info-box-icon bg-info"><i class="far fa-credit-card"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text" >Jumlah Piutang</span>
-                <span class="info-box-number" >{{piutang}}</span>
+                <span class="info-box-number" >{{piutang|number_format(0,'','.')}}</span>
               </div>
             </div>
         </div>
@@ -21,7 +21,7 @@
               <span class="info-box-icon bg-warning"><i class="far fa-credit-card"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text">Kurang Bayar MHN</span>
-                <span class="info-box-number" >{{utangmashun}}</span>
+                <span class="info-box-number" >{{utangmashun|number_format(0,'','.')}}</span>
               </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
                         {% for x in p.transaksi %}
                         {% set total = total + x.harga_pabrik %}
                         {% endfor %}
-                        <td>{{ total }}</td>
+                        <td>{{ total|number_format(0,'','.') }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
