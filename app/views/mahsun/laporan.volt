@@ -54,11 +54,11 @@
                         <td>{{p.tanggal_transaksi}}</td>
                         <td>{{p.supir.nopol}}</td>
                         <td>{{p.supir.nama_supir}}</td>
-                        <td>{{p.volume_mahsun}}</td>
-                        <td>{{p.harga_mahsun}}</td>
+                        <td>{{p.volume_mahsun|number_format(2,',','.')}}</td>
+                        <td>{{p.harga_mahsun|number_format(0,'','.')}}</td>
                         <td>{{p.cucian.nama_cucian}}</td>
-                        <td>{{p.harga_pemilikTruk}}</td>
-                        <td>{{p.bon_supir}}</td>
+                        <td>{{p.harga_pemilikTruk|number_format(0,'','.')}}</td>
+                        <td>{{p.bon_supir|number_format(0,'','.')}}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -84,7 +84,7 @@
                         <td>{{ p.tanggal_selesai }}</td>
                         <td>{{ p.alat.nama_alatBerat }}</td>
                         <td>{{ p.jam_pakai }}</td>
-                        <td>{{ p.harga_pakai }}</td>
+                        <td>{{ p.harga_pakai|number_format(0,'','.') }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -96,19 +96,19 @@
                 <tbody>
                     <tr>
                         <td>Pasir</td>
-                        <td>{{sumpasir}}</td>
+                        <td>{{sumpasir|number_format(0,'','.')}}</td>
                     </tr>
                     <tr>
                         <td>Bon Supir</td>
-                        <td>{{sumbon}}</td>
+                        <td>{{sumbon|number_format(0,'','.')}}</td>
                     </tr>
                     <tr>
                         <td>Alat Berat</td>
-                        <td>{{sumalat}}</td>
+                        <td>{{sumalat|number_format(0,'','.')}}</td>
                     </tr>
                     <tr>
                         <td>Kurang Bayar Mahsun</td>
-                        <td>{{sumalat - (sumpasir+sumbon)}}</td>
+                        <td>{{(sumalat - (sumpasir+sumbon))|number_format(0,'','.')}}</td>
                     </tr>
                 </tbody>
             </table>
