@@ -49,8 +49,8 @@
                         {% for p in pemakaian %}
                         <tr>
                             <td>{{ p.alat.nama_alatBerat }}</td>
-                            <td>{{ p.tanggal_mulai }}</td>
-                            <td>{{ p.tanggal_selesai }}</td>
+                            <td>{{ p.tanggal_mulai|tgl }}</td>
+                            <td>{{ p.tanggal_selesai|tgl }}</td>
                             <td>{{ p.jam_pakai }}</td>
                             <td>{{ p.harga_pakai|number_format(0,'','.') }}</td>
                             <td>
