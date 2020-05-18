@@ -58,7 +58,7 @@ class TransaksiController extends ControllerBase
             $trans->id_supir = $sup->id_supir;
             $harga_pasir = $trans->pabrik->harga_pasir;
             $find_pengiriman = Pengiriman::findFirst([
-                'conditions' => 'id_pabrik != :pab: AND '.'id_pemilik = :pem:',
+                'conditions' => 'id_pabrik = :pab: AND '.'id_pemilik = :pem:',
                 'bind' => [
                     'pab' => $trans->pabrik->id_pabrik,
                     'pem' => $trans->supir->pemilik->id_pemilik
@@ -134,7 +134,7 @@ class TransaksiController extends ControllerBase
             $trans->id_supir = $sup->id_supir;
             $harga_pasir = $trans->pabrik->harga_pasir;
             $find_pengiriman = Pengiriman::findFirst([
-                'conditions' => 'id_pabrik != :pab: AND '.'id_pemilik = :pem:',
+                'conditions' => 'id_pabrik = :pab: AND '.'id_pemilik = :pem:',
                 'bind' => [
                     'pab' => $trans->pabrik->id_pabrik,
                     'pem' => $trans->supir->pemilik->id_pemilik

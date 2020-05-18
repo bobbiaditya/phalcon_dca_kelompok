@@ -11,7 +11,9 @@ class PemakaianAlatBeratController extends ControllerBase
     // passing view
     public function indexAction()
     {
-        $this->view->pemakaian = PemakaianAlatBerat::find();    
+        $this->view->pemakaian = PemakaianAlatBerat::find([
+            'order'      => 'tanggal_mulai desc'
+        ]);    
     }
     // passing view
     public function tambahAction()

@@ -79,7 +79,7 @@ class PemilikTrukController extends ControllerBase
             {
                 $this->flashSession->error($message->getMessage());
             }
-            $this->response->redirect('/pemiliktruk/edit');
+            $this->response->redirect('/pemiliktruk/edit/'.$id);
         }
         else
         {

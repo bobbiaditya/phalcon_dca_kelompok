@@ -38,11 +38,18 @@ class PengirimanController extends ControllerBase
         }
         $id_pab = $this->request->getPost('id_pabrik', 'string');
         $id_pem = $this->request->getPost('id_pemilik', 'string');
-        $checkIdPabrik = Pabrik::findFirst("id_pabrik = '$id_pab'");
-        $checkIdPemilik = PemilikTruk::findFirst("id_pemilik = '$id_pem'"); 
-        if( $checkIdPabrik && $checkIdPemilik)
+        $find_pengiriman = Pengiriman::findFirst([
+            'conditions' => 'id_pabrik = :pab: AND '.'id_pemilik = :pem:',
+            'bind' => [
+                'pab' => $id_pab,
+                'pem' => $id_pem
+            ],
+            ]);
+        if($find_pengiriman)
         {
-            $this->flashSession->error('Data pengiriman '.$checkIdPemilik->nama_pemilik.' ke '.$checkIdPabrik->nama_pabrik.' sudah ada');
+            $pab = Pabrik::findFirst("id_pabrik = '$id_pab'");
+            $pem = PemilikTruk::findFirst("id_pemilik = '$id_pem'");
+            $this->flashSession->error('Data pengiriman '.$pem->nama_pemilik.' ke '.$pab->nama_pabrik.' sudah ada');
             $this->response->redirect('/pengiriman/tambah');
             $flag=0;
         }
@@ -120,17 +127,20 @@ class PengirimanController extends ControllerBase
             $peng = Pengiriman::findFirstById_pengiriman($id);
             $id_pab = $this->request->getPost('id_pabrik', 'string');
             $id_pem = $this->request->getPost('id_pemilik', 'string');
-            $flag=1;
-            if($peng->id_pabrik != $id_pab || $peng->id_pemilik != $id_pem)
+            $find_pengiriman = Pengiriman::findFirst([
+                'conditions' => 'id_pabrik = :pab: AND '.'id_pemilik = :pem:',
+                'bind' => [
+                    'pab' => $id_pab,
+                    'pem' => $id_pem
+                ],
+                ]);
+            if($find_pengiriman)
             {
-                $checkIdPabrik = Pabrik::findFirst("id_pabrik = '$id_pab'");
-                $checkIdPemilik = PemilikTruk::findFirst("id_pemilik = '$id_pem'");
-                if( $checkIdPabrik && $checkIdPemilik)
-                {
-                    $this->flashSession->error('Data pengiriman '.$checkIdPemilik->nama_pemilik.' ke '.$checkIdPabrik->nama_pabrik.' sudah ada');
-                    $this->response->redirect('/pengiriman/edit/'.$id);
-                    $flag=0;
-                }
+                $pab = Pabrik::findFirst("id_pabrik = '$id_pab'");
+                $pem = PemilikTruk::findFirst("id_pemilik = '$id_pem'");
+                $this->flashSession->error('Data pengiriman '.$pem->nama_pemilik.' ke '.$pab->nama_pabrik.' sudah ada');
+                $this->response->redirect('/pengiriman/edit/'.$id);
+                $flag=0;
             }
             if($flag)
             {
