@@ -61,15 +61,15 @@
                         <td>{{p.tanggal_transaksi}}</td>
                         <td>{{p.pabrik.nama_pabrik}}</td>
                         <td>{{p.supir.nama_supir}}</td>
-                        <td>{{p.volume_pasir}}</td>
-                        <td>{{p.harga_pabrik}}</td>
-                        <td>{{p.volume_mahsun}}</td>
-                        <td>{{p.harga_mahsun}}</td>
-                        <td>{{p.volume_pemilikTruk}}</td>
-                        <td>{{p.harga_pemilikTruk}}</td>
-                        <td>{{p.bon_supir}}</td>
+                        <td>{{p.volume_pasir|number_format(2,',','.')}}</td>
+                        <td>{{p.harga_pabrik|number_format(0,'','.')}}</td>
+                        <td>{{p.volume_mahsun|number_format(2,',','.')}}</td>
+                        <td>{{p.harga_mahsun|number_format(0,'','.')}}</td>
+                        <td>{{p.volume_pemilikTruk|number_format(2,',','.')}}</td>
+                        <td>{{p.harga_pemilikTruk|number_format(0,'','.')}}</td>
+                        <td>{{p.bon_supir|number_format(0,'','.')}}</td>
                         <td>{{p.cucian.nama_cucian}}</td>
-                        <td>{{p.total_modal}}</td>
+                        <td>{{p.total_modal|number_format(0,'','.')}}</td>
                         <td>{{p.keterangan}}</td>
                         <td>
                             <a href="{{url('transaksi/edit/'~p.id_transaksi) }}" class="btn btn-warning btn-sm">Edit</a>
