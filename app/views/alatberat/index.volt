@@ -26,7 +26,7 @@
                         {% for a in alat %}
                         <tr>
                             <td>{{ a.nama_alatBerat }}</td>
-                            <td>{{ a.harga_alatBerat }}</td>
+                            <td>{{ a.harga_alatBerat|number_format(0,'','.') }}</td>
                             <td>
                                 <a href="{{url('alatberat/edit/'~a.id_alatBerat) }}" class="btn btn-warning btn-sm">Edit</a>
                                 <a href="{{url('alatberat/hapus/'~a.id_alatBerat) }}" class="btn btn-danger btn-sm">Hapus</a>
