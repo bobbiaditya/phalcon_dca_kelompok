@@ -127,20 +127,23 @@ class PengirimanController extends ControllerBase
             $peng = Pengiriman::findFirstById_pengiriman($id);
             $id_pab = $this->request->getPost('id_pabrik', 'string');
             $id_pem = $this->request->getPost('id_pemilik', 'string');
-            $find_pengiriman = Pengiriman::findFirst([
-                'conditions' => 'id_pabrik = :pab: AND '.'id_pemilik = :pem:',
-                'bind' => [
-                    'pab' => $id_pab,
-                    'pem' => $id_pem
-                ],
-                ]);
-            if($find_pengiriman)
+            if($peng->id_pabrik != $id_pab || $peng->id_pemilik != $id_pem)
             {
-                $pab = Pabrik::findFirst("id_pabrik = '$id_pab'");
-                $pem = PemilikTruk::findFirst("id_pemilik = '$id_pem'");
-                $this->flashSession->error('Data pengiriman '.$pem->nama_pemilik.' ke '.$pab->nama_pabrik.' sudah ada');
-                $this->response->redirect('/pengiriman/edit/'.$id);
-                $flag=0;
+                $find_pengiriman = Pengiriman::findFirst([
+                    'conditions' => 'id_pabrik = :pab: AND '.'id_pemilik = :pem:',
+                    'bind' => [
+                        'pab' => $id_pab,
+                        'pem' => $id_pem
+                    ],
+                    ]);
+                if($find_pengiriman)
+                {
+                    $pab = Pabrik::findFirst("id_pabrik = '$id_pab'");
+                    $pem = PemilikTruk::findFirst("id_pemilik = '$id_pem'");
+                    $this->flashSession->error('Data pengiriman '.$pem->nama_pemilik.' ke '.$pab->nama_pabrik.' sudah ada');
+                    $this->response->redirect('/pengiriman/edit/'.$id);
+                    $flag=0;
+                }
             }
             if($flag)
             {
