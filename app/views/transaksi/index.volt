@@ -58,7 +58,7 @@
                 <tbody>
                     {% for p in trans %}
                     <tr>
-                        <td>{{p.tanggal_transaksi}}</td>
+                        <td>{{p.tanggal_transaksi|tgl}}</td>
                         <td>{{p.pabrik.nama_pabrik}}</td>
                         <td>{{p.supir.nama_supir}}</td>
                         <td>{{p.volume_pasir|number_format(2,',','.')}}</td>
