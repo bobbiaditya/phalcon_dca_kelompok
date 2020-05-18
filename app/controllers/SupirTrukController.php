@@ -107,16 +107,14 @@ class SupirTrukController extends ControllerBase
         {
             $sup = SupirTruk::findFirstById_supir($id);
             $nama_supir = $this->request->getPost('nama_supir', 'string');
-            $flag=0;
+            $flag=1;
             if($sup->nama_supir != $nama_supir)
             {
                 $checkNamaSupir = SupirTruk::findFirst("nama_supir = '$nama_supir'");
                 if($checkNamaSupir){
+                    $flag=0;
                     $this->flashSession->error('Nama Supir sudah dipakai');
                     $this->response->redirect('/supirtruk/edit/'.$id);
-                }
-                else{
-                    $flag=1;
                 }
             }
             if($flag)
