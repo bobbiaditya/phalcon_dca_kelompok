@@ -106,59 +106,57 @@ class CucianController extends ControllerBase
             }
             $this->response->redirect('/cucian/edit/'.$id);
         }
-        else 
+        else
         {
-            $cuci = Cucian::findFirstById_cucian($id);
-            $nama = $this->request->getPost('nama_cucian');
-            $kode = $this->request->getPost('kode_cucian');
-            $f_nama=0;
-            $f_kode=0;
-            if($cuci->nama_cucian != $nama)
+            $cuc = Cucian::findFirstById_cucian($id);
+            $nama_cucian = $this->request->getPost('nama_cucian', 'string');
+            $kode_cucian = $this->request->getPost('kode_cucian', 'string');
+            $flag0=0;
+            $flag1=0;
+            if($cuc->nama_cucian != $nama_cucian)
             {
-                $temp_nama = Cucian::findFirstByNama_cucian($nama);
-                if($temp_nama){
+                $checkNamaCucian = Cucian::findFirst("nama_cucian = '$nama_cucian'");
+                if($checkNamaCucian){
                     $this->flashSession->error('Nama Cucian sudah dipakai');
                     $this->response->redirect('/cucian/edit/'.$id);
                 }
                 else
                 {
-                    $f_nama=1;
+                    $flag0=1;
                 }
             }
-            if($cuci->kode_cucian != $kode)
+            if($cuc->kode_cucian != $kode_cucian)
             {
-                $temp_kode = Cucian::findFirstByKode_cucian($kode);
-                if($temp_kode){
+                $checkKodeCucian = Cucian::findFirst("kode_cucian = '$kode_cucian'");
+                if($checkKodeCucian){
                     $this->flashSession->error('Kode Cucian sudah dipakai');
                     $this->response->redirect('/cucian/edit/'.$id);
                 }
                 else
                 {
-                    $f_kode=1;
+                    $flag1=1;
                 }
             }
-            // cek yg sudah ada
-            if($cuci->kode_cucian == $kode || $cuci->nama_cucian == $nama ||($f_nama && $f_kode)){
-                
-            // $cuci = Cucian::findFirstById_cucian($id);
-
-            $cuci->assign(
-                $this->request->getPost(),
-                [
-                    'nama_cucian',
-                    'kode_cucian'
-                ]
-            );
-            $cuci->updated_at = date('Y-m-d h:i:sa');
-            
-            $success = $cuci->save();
-            if($success)
+            if($flag0 && $flag1)
             {
-                $this->flashSession->success('Data berhasil diedit');
+                $cuc->assign(
+                    $this->request->getPost(),
+                    [
+                        'nama_cucian',
+                        'kode_cucian',
+                    ]
+                );
+                $cuc->updated_at = date('Y-m-d h:i:sa');
+                
+        
+                $success = $cuc->save();
+                if($success)
+                {
+                    $this->flashSession->success('Update data berhasil');
+                }
+                $this->response->redirect('/cucian');
             }
-
-            $this->response->redirect('/cucian');
-            }
+            
         }
     }
 
