@@ -27,6 +27,7 @@ class PengirimanController extends ControllerBase
     {
         $validation = new PengirimanValidation();
         $messages = $validation->validate($_POST);
+        $flag = 1;
         if(count($messages))
         {
             foreach ($messages as $message)
@@ -35,7 +36,17 @@ class PengirimanController extends ControllerBase
             }
             $this->response->redirect('/pengiriman/tambah');
         }
-        else
+        $id_pab = $this->request->getPost('id_pabrik', 'string');
+        $id_pem = $this->request->getPost('id_pemilik', 'string');
+        $checkIdPabrik = Pabrik::findFirst("id_pabrik = '$id_pab'");
+        $checkIdPemilik = PemilikTruk::findFirst("id_pemilik = '$id_pem'"); 
+        if( $checkIdPabrik && $checkIdPemilik)
+        {
+            $this->flashSession->error('Data pengiriman '.$checkIdPemilik->nama_pemilik.' ke '.$checkIdPabrik->nama_pabrik.' sudah ada');
+            $this->response->redirect('/pengiriman/tambah');
+            $flag=0;
+        }
+        if($flag)
         {
             $peng= new Pengiriman();
             $peng->assign(
@@ -91,27 +102,55 @@ class PengirimanController extends ControllerBase
             {
                 $this->flashSession->error($message->getMessage());
             }
-            $this->response->redirect('/pengiriman/tambah');
+            $this->response->redirect('/pengiriman/edit/'.$id);
         }
         else
         {
-            $peng = Pengiriman::findFirstById_pengiriman($id);
-            $peng->assign(
-                $this->request->getPost(),
-                [
-                    'id_pabrik',
-                    'id_pemilik',
-                    'harga_kirim',
-                    'harga_supir'
-                ]
-            );
-            $peng->updated_at = date('Y-m-d h:i:sa');
-            $success = $peng->save();
-            if($success)
+            $validation = new PengirimanValidation();
+            $messages = $validation->validate($_POST);
+            $flag = 1;
+            if(count($messages))
             {
-                $this->flashSession->success('Edit data berhasil');
+                foreach ($messages as $message)
+                {
+                    $this->flashSession->error($message->getMessage());
+                }
+                $this->response->redirect('/pengiriman/edit/'.$id);
             }
-            $this->response->redirect('/pengiriman');
+            $peng = Pengiriman::findFirstById_pengiriman($id);
+            $id_pab = $this->request->getPost('id_pabrik', 'string');
+            $id_pem = $this->request->getPost('id_pemilik', 'string');
+            $flag=1;
+            if($peng->id_pabrik != $id_pab || $peng->id_pemilik != $id_pem)
+            {
+                $checkIdPabrik = Pabrik::findFirst("id_pabrik = '$id_pab'");
+                $checkIdPemilik = PemilikTruk::findFirst("id_pemilik = '$id_pem'");
+                if( $checkIdPabrik && $checkIdPemilik)
+                {
+                    $this->flashSession->error('Data pengiriman '.$checkIdPemilik->nama_pemilik.' ke '.$checkIdPabrik->nama_pabrik.' sudah ada');
+                    $this->response->redirect('/pengiriman/edit/'.$id);
+                    $flag=0;
+                }
+            }
+            if($flag)
+            {
+                $peng->assign(
+                    $this->request->getPost(),
+                    [
+                        'id_pabrik',
+                        'id_pemilik',
+                        'harga_kirim',
+                        'harga_supir'
+                    ]
+                );
+                $peng->updated_at = date('Y-m-d h:i:sa');
+                $success = $peng->save();
+                if($success)
+                {
+                    $this->flashSession->success('Edit data berhasil');
+                }
+                $this->response->redirect('/pengiriman');
+            }
         }
     }
 
@@ -183,44 +222,44 @@ class PengirimanController extends ControllerBase
 
 
     }
-    public function ajaxAction(){
+    // public function ajaxAction(){
 
-        $id_pem = $this->request->get('id_pem');
-        $id_pab = Pengiriman::find(
-            [
-                'columns'    => [
-                    'id_pabrik',
-                    // 'nama_pabrik'
-                ],
-                'conditions' => 'id_pemilik = :id_pem:',
-                'bind'       => [
-                    'id_pem' => $id_pem,
-                ],
-            ]
-        );
-        // $data = Pabrik::find(array(
-        //     [
-        //         'columns'    => [
-        //             'id_pabrik'
-        //             // 'nama_pabrik'
-        //         ],
-        //         'conditions' => 'id_pabrik IN :id_pab:',
-        //         'bind'       => [
-        //             'id_pab' => array($id_pab),
-        //         ],
-        //     ]
-        // ));
-        $data = Pabrik::query()
-            ->where('id_pabrik NOT IN :id_pab:')
-            ->bind(
-                [
-                    'id_pab'  => $id_pab,
-                ]
-            )
-            ->execute();
-        // $id_pab = Pengiriman::select('id_pabrik')->whereId_pemilik($id_pem)->get();
-        // $data = Pabrik::select('id_pabrik', 'nama_pabrik')->whereNotIn('id_pabrik', $id_pab)->get();
-        // return \Response::json($data);
-        return $this->response->setJsonContent($data);
-    }
+    //     $id_pem = $this->request->get('id_pem');
+    //     $id_pab = Pengiriman::find(
+    //         [
+    //             'columns'    => [
+    //                 'id_pabrik',
+    //                 // 'nama_pabrik'
+    //             ],
+    //             'conditions' => 'id_pemilik = :id_pem:',
+    //             'bind'       => [
+    //                 'id_pem' => $id_pem,
+    //             ],
+    //         ]
+    //     );
+    //     // $data = Pabrik::find(array(
+    //     //     [
+    //     //         'columns'    => [
+    //     //             'id_pabrik'
+    //     //             // 'nama_pabrik'
+    //     //         ],
+    //     //         'conditions' => 'id_pabrik IN :id_pab:',
+    //     //         'bind'       => [
+    //     //             'id_pab' => array($id_pab),
+    //     //         ],
+    //     //     ]
+    //     // ));
+    //     $data = Pabrik::query()
+    //         ->where('id_pabrik NOT IN :id_pab:')
+    //         ->bind(
+    //             [
+    //                 'id_pab'  => $id_pab,
+    //             ]
+    //         )
+    //         ->execute();
+    //     // $id_pab = Pengiriman::select('id_pabrik')->whereId_pemilik($id_pem)->get();
+    //     // $data = Pabrik::select('id_pabrik', 'nama_pabrik')->whereNotIn('id_pabrik', $id_pab)->get();
+    //     // return \Response::json($data);
+    //     return $this->response->setJsonContent($data);
+    // }
 }

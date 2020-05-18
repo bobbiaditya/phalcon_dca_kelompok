@@ -29,9 +29,9 @@
                     <label>Nama Pabrik</label>
                     <select class="form-control pabrik" id="id_pabrik" name="id_pabrik">
                         <option value="" disabled selected>Nama Pabrik</option>
-                        <!-- {% for p in pabrik %}
+                        {% for p in pabrik %}
                             <option value="{{p.id_pabrik}}">{{p.nama_pabrik}}</option>
-                        {% endfor %} -->
+                        {% endfor %}
                     </select>
                 </div>
                 
@@ -53,7 +53,7 @@
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $(document).ready(function () {
         $(document).on('change', '.pemilik', function () {
             var id_pem = $(this).val();
@@ -90,5 +90,5 @@
 
         });
     });
-</script>
+</script> -->
 {% endblock %}
