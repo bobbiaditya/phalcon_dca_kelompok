@@ -88,41 +88,41 @@ class AlatBeratController extends ControllerBase
         }
         else 
         {
-            $alat = AlatBerat::findFirstById_alatBerat($id);
-            $nama = $this->request->getPost('nama_alatBerat');
-            $f_nama = 0;
-            if($alat->nama_alatBerat != $nama)
+            $al = AlatBerat::findFirstById_alatBerat($id);
+            $nama_alatBerat = $this->request->getPost('nama_alatBerat', 'string');
+            $flag=0;
+            if($al->nama_alatBerat != $nama_alatBerat)
             {
-                $temp = AlatBerat::findFirstByNama_alatBerat($nama);
-                if($temp)
-                {
-                    $this->flashSession->error('Nama Alat Berat telah dipakai');
+                $checkNamaAlat = AlatBerat::findFirst("nama_alatBerat = '$nama_alatBerat'");
+                if($checkNamaAlat){
+                    $this->flashSession->error('Nama sudah dipakai');
                     $this->response->redirect('/alatberat/edit/'.$id);
                 }
-                else {
-                    $f_nama=1;
+                else
+                {
+                    $flag=1;
                 }
             }
-            if($f_nama==1) {
-             
-            
-            $alat->assign(
-                $this->request->getPost(),
-                [
-                    'nama_alatBerat',
-                    'harga_alatBerat'
-                ]
-            );
-            $alat->updated_at = date('Y-m-d h:i:sa');
-            
-            $success = $alat->save();
-            if($success)
+            else
             {
-                $this->flashSession->success('Data berhasil diedit');
+                $al->assign(
+                    $this->request->getPost(),
+                    [
+                        'nama_alatBerat',
+                        'harga_alatBerat'
+                    ]
+                );
+                $al->updated_at = date('Y-m-d h:i:sa');
+                
+                $success = $al->save();
+                
+                if($success)
+                {
+                    $this->flashSession->success('Edit data berhasil');
+                }
+        
+                $this->response->redirect('/alatberat');
             }
-            
-            $this->response->redirect('/alatberat');
-        }
         }
     }
 
