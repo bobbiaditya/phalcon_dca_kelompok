@@ -190,4 +190,44 @@ class PengirimanController extends ControllerBase
 
 
     }
+    public function ajaxAction(){
+
+        $id_pem = $this->request->get('id_pem');
+        $id_pab = Pengiriman::find(
+            [
+                'columns'    => [
+                    'id_pabrik',
+                    // 'nama_pabrik'
+                ],
+                'conditions' => 'id_pemilik = :id_pem:',
+                'bind'       => [
+                    'id_pem' => $id_pem,
+                ],
+            ]
+        );
+        // $data = Pabrik::find(array(
+        //     [
+        //         'columns'    => [
+        //             'id_pabrik'
+        //             // 'nama_pabrik'
+        //         ],
+        //         'conditions' => 'id_pabrik IN :id_pab:',
+        //         'bind'       => [
+        //             'id_pab' => array($id_pab),
+        //         ],
+        //     ]
+        // ));
+        $data = Pabrik::query()
+            ->where('id_pabrik NOT IN :id_pab:')
+            ->bind(
+                [
+                    'id_pab'  => $id_pab,
+                ]
+            )
+            ->execute();
+        // $id_pab = Pengiriman::select('id_pabrik')->whereId_pemilik($id_pem)->get();
+        // $data = Pabrik::select('id_pabrik', 'nama_pabrik')->whereNotIn('id_pabrik', $id_pab)->get();
+        // return \Response::json($data);
+        return $this->response->setJsonContent($data);
+    }
 }
