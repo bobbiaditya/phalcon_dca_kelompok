@@ -64,6 +64,12 @@ class TransaksiController extends ControllerBase
                     'pem' => $trans->supir->pemilik->id_pemilik
                 ],
             ]);
+            if(!$find_pengiriman)
+            {
+                $this->flashSession->error('Data pengiriman '.$sup->pemilik->nama_pemilik.' ke '.$pab->nama_pabrik.' Belum ada!');
+                $this->response->redirect('/transaksi/tambah');
+                return;
+            }
             $harga_kirim = $find_pengiriman->harga_kirim;
             $bon = $find_pengiriman->harga_supir;
             $konstan = Konstan::findFirstById_konstan(1);
@@ -107,7 +113,7 @@ class TransaksiController extends ControllerBase
             {
                 $this->flashSession->error($message->getMessage());
             }
-            $this->response->redirect('/transaksi/edit');
+            $this->response->redirect('/transaksi/edit/'.$id);
         }
         else
         {
@@ -134,6 +140,12 @@ class TransaksiController extends ControllerBase
                     'pem' => $trans->supir->pemilik->id_pemilik
                 ],
             ]);
+            if(!$find_pengiriman)
+            {
+                $this->flashSession->error('Data pengiriman '.$sup->pemilik->nama_pemilik.' ke '.$pab->nama_pabrik.' Belum ada!');
+                $this->response->redirect('/transaksi/edit/'.$id);
+                return;
+            }
             $harga_kirim = $find_pengiriman->harga_kirim;
             $bon = $find_pengiriman->harga_supir;
             $konstan = Konstan::findFirstById_konstan(1);
