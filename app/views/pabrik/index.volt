@@ -28,7 +28,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for p in pabrik %}
+                    {% for p in pabriks %}
                     <tr>
                         <td>{{ p.nama_pabrik }}</td>
                         <td>{{ p.kode_pabrik }}</td>
