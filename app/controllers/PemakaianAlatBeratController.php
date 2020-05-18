@@ -146,40 +146,33 @@ class PemakaianAlatBeratController extends ControllerBase
         {
             if($flag1)
             {
-                $pemakaian = PemakaianAlatBerat::query()
-                ->where('tanggal_selesai < :tgl_akhir:')
-                ->andWhere('tanggal_selesai > :tgl_awal:')
-                ->bind(
-                    [
+                $pemakaian = PemakaianAlatBerat::find([
+                    'conditions' => 'tanggal_selesai < :tgl_akhir: AND '. 'tanggal_selesai > :tgl_awal:',
+                    'bind' => [
                         'tgl_awal' => $tgl_awal,
                         'tgl_akhir'  => $tgl_akhir,
-                    ]
-                )
-                ->execute();
+                    ],
+                ]);
             }
             else
             {
-                $pemakaian = PemakaianAlatBerat::query()
-                ->Where('tanggal_selesai > :tgl_awal:')
-                ->bind(
-                    [
+                $pemakaian = PemakaianAlatBerat::find([
+                    'conditions' => 'tanggal_selesai > :tgl_awal:',
+                    'bind' => [
                         'tgl_awal' => $tgl_awal,
-                    ]
-                )
-                ->execute();
+                    ],
+                ]);
             }
             
         }
         else
         {
-            $pemakaian = PemakaianAlatBerat::query()
-            ->where('tanggal_selesai < :tgl_akhir:')
-            ->bind(
-                [
+            $pemakaian = PemakaianAlatBerat::find([
+                'conditions' => 'tanggal_selesai < :tgl_akhir:',
+                'bind' => [
                     'tgl_akhir'  => $tgl_akhir,
-                ]
-            )
-            ->execute();
+                ],
+            ]);
         }
         $this->view->pemakaian = $pemakaian;   
 
