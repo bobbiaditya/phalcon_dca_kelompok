@@ -96,30 +96,24 @@ class PabrikController extends ControllerBase
             $pab = Pabrik::findFirstById_pabrik($id);
             $nama_pabrik = $this->request->getPost('nama_pabrik', 'string');
             $kode_pabrik = $this->request->getPost('kode_pabrik', 'string');
-            $flag0=0;
-            $flag1=0;
+            $flag0=1;
+            $flag1=1;
             if($pab->nama_pabrik != $nama_pabrik)
             {
                 $checkNamaPabrik = Pabrik::findFirst("nama_pabrik = '$nama_pabrik'");
                 if($checkNamaPabrik){
+                    $flag0=0;
                     $this->flashSession->error('Nama Pabrik sudah dipakai');
                     $this->response->redirect('/pabrik/edit/'.$id);
-                }
-                else
-                {
-                    $flag0=1;
                 }
             }
             if($pab->kode_pabrik != $kode_pabrik)
             {
                 $checkKodePabrik = Pabrik::findFirst("kode_pabrik = '$kode_pabrik'");
                 if($checkKodePabrik){
+                    $flag1=0;
                     $this->flashSession->error('Kode Pabrik sudah dipakai');
                     $this->response->redirect('/pabrik/edit/'.$id);
-                }
-                else
-                {
-                    $flag1=1;
                 }
             }
             if($flag0 && $flag1)
