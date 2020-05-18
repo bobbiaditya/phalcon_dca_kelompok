@@ -53,7 +53,7 @@
                             <td>{{ p.tanggal_mulai }}</td>
                             <td>{{ p.tanggal_selesai }}</td>
                             <td>{{ p.jam_pakai }}</td>
-                            <td>{{ p.harga_pakai }}</td>
+                            <td>{{ p.harga_pakai|number_format(0,'','.') }}</td>
                             <td>
                                 <a href="{{url('pemakaianalatberat/edit/'~p.id_pemakaian) }}" class="btn btn-warning btn-sm">Edit</a>
                                 <a href="{{url('pemakaianalatberat/hapus/'~p.id_pemakaian) }}" class="btn btn-danger btn-sm">Hapus</a>

@@ -54,8 +54,8 @@
                     <tr>
                         <td>{{p.pabrik.nama_pabrik}}</td>
                         <td>{{p.pemilik.nama_pemilik}}</td>
-                        <td>{{p.harga_kirim}}</td>
-                        <td>{{p.harga_supir}}</td>
+                        <td>{{p.harga_kirim|number_format(0,'','.')}}</td>
+                        <td>{{p.harga_supir|number_format(0,'','.')}}</td>
                         <td>
                             <a href="{{url('pengiriman/edit/'~p.id_pengiriman) }}" class="btn btn-warning btn-sm">Edit</a>
                             <a href="{{url('pengiriman/hapus/'~p.id_pengiriman) }}" class="btn btn-danger btn-sm">Hapus</a>
