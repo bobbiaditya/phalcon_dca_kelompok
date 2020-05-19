@@ -116,7 +116,7 @@ class SecurityPlugin extends Injectable
             'user'                  => ['index', 'tambah', 'hapus','master','register'],
             'alatberat'             => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
             'cucian'                => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
-            'user'                  => ['index', 'tambah', 'proses', 'hapus', 'master'],
+            'user'                  => ['index', 'tambah', 'proses', 'hapus', 'master','register'],
             'pemakaianalatberat'    => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus', 'search'],
             'transaksi'             => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus', 'search'],
             'pengiriman'            => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus', 'search'],
@@ -140,9 +140,9 @@ class SecurityPlugin extends Injectable
         
         // yang boleh diakses admin
         $adminResources = [
-            'pemakaianalatberat'    => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
+            'pemakaianalatberat'    => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus', 'search'],
             'user'                  => ['admin'],
-            'transaksi'             => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
+            'transaksi'             => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus', 'search'],
 
         ];
         foreach ($adminResources as $resource => $actions) {
