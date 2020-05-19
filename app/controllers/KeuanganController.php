@@ -32,9 +32,14 @@ class KeuanganController extends ControllerBase
                 'column' => 'harga_pabrik',
             ]
         );
+        $pemilik = Transaksi::sum(
+            [
+                'column' => 'harga_pemilikTruk',
+            ]
+        );
 
         $pabrik = Pabrik::find();
-        
+        $this->view->utangpemilik = $pemilik -$bon_supir;
         $this->view->piutang = $piutang;
         $this->view->utangmashun = $pemakaian - ($harga_mahsun + $bon_supir);
         $this->view->pabrik = $pabrik; 
