@@ -7,7 +7,7 @@
 <div class="container">
     <br>
     <div class="row">
-        <div class="col-md-6 col-sm-6 col-12">
+        <div class="col-md-4 col-sm-6 col-12">
             <div class="info-box">
               <span class="info-box-icon bg-info"><i class="far fa-credit-card"></i></span>
               <div class="info-box-content">
@@ -16,7 +16,16 @@
               </div>
             </div>
         </div>
-        <div class="col-md-6 col-sm-6 col-12">
+        <div class="col-md-4 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-info"><i class="far fa-credit-card"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Jumlah Utang Pemillik Truk</span>
+                <span class="info-box-number" >{{utangpemilik|number_format(0,'','.')}}</span>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-12">
             <div class="info-box">
               <span class="info-box-icon bg-warning"><i class="far fa-credit-card"></i></span>
               <div class="info-box-content">
