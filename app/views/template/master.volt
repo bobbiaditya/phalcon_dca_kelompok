@@ -22,7 +22,7 @@
 </head>
 {% block title %}
 {% endblock %}
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px;">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px; background-color: #f4f6f9;">
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
@@ -179,7 +179,7 @@
                 </nav>
             </div>
         </aside>
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="background-color: #f4f6f9;">
             {% block content %}
             {% endblock %}
         </div>
