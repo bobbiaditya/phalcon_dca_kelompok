@@ -20,7 +20,7 @@
             <div class="info-box">
               <span class="info-box-icon bg-info"><i class="far fa-credit-card"></i></span>
               <div class="info-box-content">
-                <span class="info-box-text">Jumlah Utang Pemillik Truk</span>
+                <span class="info-box-text">Utang Pemillik Truk</span>
                 <span class="info-box-number" >{{utangpemilik|number_format(0,'','.')}}</span>
               </div>
             </div>
